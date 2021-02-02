@@ -15,3 +15,4 @@ RUN groupadd --gid $USER_GID $USERNAME \
 
 RUN conda install -c conda-forge jupyterlab
 RUN conda install -c ranaroussi yfinance
+RUN pip install black
