@@ -14,5 +14,11 @@ RUN groupadd --gid $USER_GID $USERNAME \
     && chmod 0440 /etc/sudoers.d/$USERNAME
 
 RUN conda install -c conda-forge jupyterlab
-RUN conda install -c ranaroussi yfinance
-RUN pip install black
+RUN pip install black \
+    nb_black
+
+USER vscode
+WORKDIR /home/vscode
+RUN git clone https://github.com/ranaroussi/yfinance.git && \
+    cd yfinance && \
+    pip install -e .
